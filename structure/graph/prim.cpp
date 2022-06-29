@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #define MAXVEX 30
 #define MAXCOST 1000
-void prin(int c[MAXVEX][MAXVEX],int n); //c´æ·Å±ß n´ú±í¶¥µã¸öÊý
+void prin(int c[MAXVEX][MAXVEX],int n); //cå­˜æ”¾è¾¹ nä»£è¡¨é¡¶ç‚¹ä¸ªæ•°
 int main()
 {
     int c[MAXVEX][MAXVEX];
     int n;
     int i,j;
     int lowcost;
-    printf("ÇëÊäÈëÍ¼µÄ¶¥µã¸öÊý:");
+    printf("è¯·è¾“å…¥å›¾çš„é¡¶ç‚¹ä¸ªæ•°:");
     scanf("%d",&n);
     for(i=1;i<=n;i++)
     {
@@ -20,9 +20,9 @@ int main()
     }
     do
     {
-        printf("ÇëÊäÈëÍ¼µÄ±ß:");
+        printf("è¯·è¾“å…¥å›¾çš„è¾¹:");
         scanf("%d %d",&i,&j);
-        printf("ÇëÊäÈëÍ¼µÄÈ¨Öµ:");
+        printf("è¯·è¾“å…¥å›¾çš„æƒå€¼:");
         scanf("%d",&lowcost);
         c[i][j]=lowcost;
         c[j][i]=lowcost;
@@ -30,20 +30,20 @@ int main()
     prin(c,n);
     return 0;
 }
-void prin(int c[MAXVEX][MAXVEX],int n)
+void prim(int c[MAXVEX][MAXVEX],int n)
 {
-    int i,j,k,min; //minÓÃÀ´´æ·Å×îÐ¡µÄÈ¨Öµ
-    int lowcost[MAXVEX],closest[MAXVEX]; //lowcostÓÃÀ´´æ·Å±ßµÄÈ¨Öµ closestÅÐ¶Ï¶¥µãÊÇ·ñ´æÔÚÓëÁ¬½ÓµÄ¶¥µã
+    int i,j,k,min; //minç”¨æ¥å­˜æ”¾æœ€å°çš„æƒå€¼
+    int lowcost[MAXVEX],closest[MAXVEX]; //lowcostç”¨æ¥å­˜æ”¾è¾¹çš„æƒå€¼ closeståˆ¤æ–­é¡¶ç‚¹æ˜¯å¦å­˜åœ¨ä¸Žè¿žæŽ¥çš„é¡¶ç‚¹
     for(i=2;i<=n;i++)
     {
         lowcost[i]=c[1][i];
         closest[i]=1; 
     }
-    closest[1]=0; //½«µÚÒ»¸ö¶¥µã¼ÓÈëµ½×îÐ¡Éú³ÉÊ÷
+    closest[1]=0; //å°†ç¬¬ä¸€ä¸ªé¡¶ç‚¹åŠ å…¥åˆ°æœ€å°ç”Ÿæˆæ ‘
     for(i=2;i<=n;i++)
     {
         min=MAXCOST;
-        for(j=1;j<=n;j++) //Ñ¡³ö×îÐ¡µÄÈ¨Öµ
+        for(j=1;j<=n;j++) //é€‰å‡ºæœ€å°çš„æƒå€¼
         {
             if(closest[j]!=0 && lowcost[j]<min)
             {
@@ -51,11 +51,11 @@ void prin(int c[MAXVEX][MAXVEX],int n)
                 k=j;
             }
         }
-        printf("(%d,%d)\n",closest[k],k); //closest[k]Êä³ö¶¥µã kÊä³ö±ß
-        closest[k]=0; //½«µÚk¸ö¶¥µã¼ÓÈëµ½×îÐ¡Éú³ÉÊ÷
+        printf("(%d,%d)\n",closest[k],k); //closest[k]è¾“å‡ºé¡¶ç‚¹ kè¾“å‡ºè¾¹
+        closest[k]=0; //å°†ç¬¬kä¸ªé¡¶ç‚¹åŠ å…¥åˆ°æœ€å°ç”Ÿæˆæ ‘
         for(j=2;j<=n;j++) 
         {
-            if(closest[j]!=0 && c[k][j]<lowcost[j]) //ÖØÐÂ¶Ôlowcost closest¸³Öµ
+            if(closest[j]!=0 && c[k][j]<lowcost[j]) //é‡æ–°å¯¹lowcost closestèµ‹å€¼
             {
                 lowcost[j]=c[k][j];
                 closest[j]=k;
