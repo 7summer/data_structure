@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define MAXVEX 30
 #define MAXCOST 1000
-void prin(int c[MAXVEX][MAXVEX],int n); //c存放边 n代表顶点个数
+void prim(int c[MAXVEX][MAXVEX],int n); //c存放边 n代表顶点个数
 int main()
 {
     int c[MAXVEX][MAXVEX];
