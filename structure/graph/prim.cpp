@@ -27,7 +27,7 @@ int main()
         c[i][j]=lowcost;
         c[j][i]=lowcost;
     } while (i!=0 && j!=0);
-    prin(c,n);
+    prim(c,n);
     return 0;
 }
 void prim(int c[MAXVEX][MAXVEX],int n)
